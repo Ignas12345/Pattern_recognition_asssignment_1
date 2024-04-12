@@ -75,7 +75,7 @@ class HMM:
         l = len(S)
         X = np.zeros((self.dataSize, l))
         for i in range(l):
-          X[:,i] = self.outputDistr[S[i] - 1].rand(1)
+          X[:,i] = self.outputDistr[S[i] - 1].rand(1).flatten()
         
         
         return X, S
