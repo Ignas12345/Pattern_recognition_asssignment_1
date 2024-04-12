@@ -26,8 +26,9 @@ class DiscreteD:
         """
         
         #*** Insert your own code here and remove the following error message 
-        
-        print('Not yet implemented')
+        R = np.random.choice(np.arange(1, len(self.probMass)+1), size=nData, replace=True, p=self.probMass)
+
+        return R
         
         
     def init(self, x):

@@ -86,8 +86,26 @@ class MarkovChain:
         """
         
         #*** Insert your own code here and remove the following error message 
-        
-        print('Not yet implemented')
+        if self.is_finite == False:
+          S = []
+          S.append(np.random.choice(np.arange(1, self.nStates+1), p = self.q))
+          if tmax > 1:
+            for i in np.arange(1, tmax):
+              next_state = np.random.choice(np.arange(1, self.nStates+1), p = self.A[S[i-1] - 1])
+              S.append(next_state)
+            return S
+
+        if self.is_finite == True:
+          S = []
+          S.append(np.random.choice(np.arange(1, self.nStates+1), p = self.q))
+          if tmax > 1:
+            for i in np.arange(1, tmax):
+              next_state = np.random.choice(np.arange(1, self.nStates+2), p = self.A[S[i-1] - 1])
+              if next_state == (self.nStates + 1):
+                return S
+              else:
+                S.append(next_state)
+            return S
 
     def viterbi(self):
         pass
